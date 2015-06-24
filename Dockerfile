@@ -13,6 +13,7 @@ RUN chmod +x /*.sh
 
 RUN /pre.sh
 
+VOLUME ["/srv/airtime/stor/", "/etc/airtime/"]
 
 #RUN /generate-config-tmp.php
 # docker run -p 80:80 -it --name airtime -e LANG=en_US.UTF-8 -e LANGUAGE=en_US:en -e LC_ALL=en_US.UTF-8 -e HOSTNAME=airtime ubuntu:15.04 /bin/bash
