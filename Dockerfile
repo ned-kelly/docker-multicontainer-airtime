@@ -8,6 +8,7 @@ ENV HOSTNAME airtime
 MAINTAINER Víctor Rojas <okvic77@me.com>
 COPY apache2.sh /boot-apache2.sh
 COPY pre.sh /pre.sh
+RUN chmod +x /*.sh
 #COPY config.php /generate-config-tmp.php
 
 RUN /pre.sh
