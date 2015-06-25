@@ -1,4 +1,6 @@
 #!/bin/bash
-chmod -R 777 /etc/airtime
+
+php /help/config.php
+
 source /etc/apache2/envvars
 exec apache2 -D FOREGROUND
