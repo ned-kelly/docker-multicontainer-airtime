@@ -1,8 +1,7 @@
 <?php
 $file = "/etc/airtime/airtime.conf.tmp";
 if (file_exists($file)) {
-	// run
-	return;
+	return shell_exec('service airtime-media-monitor start && service airtime-playout restart && service airtime-liquidsoap restart');
 }
 
 $db = getenv("DB_PORT");
