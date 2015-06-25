@@ -9,4 +9,3 @@ db:
   image: 'postgres:latest'
 rabbit:
   image: 'rabbitmq:latest'
-
