@@ -1,0 +1,12 @@
+airtime:
+  image: 'okvic77/docker-airtime:latest'
+  links:
+    - db
+    - rabbit
+  ports:
+    - '80:80'
+db:
+  image: 'postgres:latest'
+rabbit:
+  image: 'rabbitmq:latest'
+
