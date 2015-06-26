@@ -10,4 +10,5 @@ service apache2 start
 mkdir /airtime
 curl -L https://github.com/sourcefabric/airtime/archive/2.5.x.tar.gz | tar --strip-components=1 -C /airtime -xz
 /airtime/install -fa
+php5enmod opcache
 rm -rf /airtime
