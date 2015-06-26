@@ -1,4 +1,4 @@
-FROM ubuntu:15.04
+FROM ubuntu:12.04
 
 ENV LANG en_US.UTF-8  
 ENV LANGUAGE en_US:en  
