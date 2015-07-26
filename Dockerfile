@@ -9,7 +9,11 @@ MAINTAINER Víctor Rojas <okvic77@me.com>
 COPY help /help
 RUN /help/pre.sh
 
+COPY apps.conf /etc/supervisor/conf.d/supervisord.conf
 
 VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime"]
 EXPOSE 80
-CMD /help/apache2.sh
+
+
+
+CMD ["/usr/bin/supervisord"]
