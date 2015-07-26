@@ -10,7 +10,7 @@ COPY help/pre.sh /pre.sh
 RUN /pre.sh
 
 COPY help/install.sh /home/airtime/install.sh
-RUN chmod x+ /home/airtime/install.sh && chown airtime /home/airtime/install.sh
+RUN chmod +x /home/airtime/install.sh && chown airtime /home/airtime/install.sh
 RUN su airtime -c "/home/airtime/install.sh"
 
 COPY alone.conf /etc/supervisor/conf.d/supervisord.conf
