@@ -9,7 +9,7 @@ MAINTAINER Víctor Rojas <okvic77@me.com>
 COPY help /help
 RUN /help/pre.sh
 
-RUN su -c "/help/install.sh" airtime
+RUN chown -R airtime /help && su -c "/help/install.sh" airtime
 
 COPY alone.conf /etc/supervisor/conf.d/supervisord.conf
 
