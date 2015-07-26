@@ -1,9 +1,9 @@
 
 [general]
-api_key = 45RIUAY97MHCEVLL2JVQ
+api_key = C66QKEUKNJG9A0KYU32I
 web_server_user = www-data
-base_url = docker.vicroj.me
-base_port = 32772
+base_url = localhost
+base_port = 80
 base_dir = /
 cache_ahead_hours = 1
 

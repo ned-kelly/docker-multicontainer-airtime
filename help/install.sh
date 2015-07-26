@@ -15,7 +15,7 @@ sudo chown -R airtime:www-data /srv/airtime/stor/
 
 sudo cp ~/helpers/htaccess /usr/share/airtime/public/.htaccess
 sudo cp ~/helpers/config /etc/airtime/airtime.conf
-sudo cp ~/helpers/media /etc/airtime/media_monitor_logging.cfg
+#sudo cp ~/helpers/media /etc/airtime/media_monitor_logging.cfg
 
 
 sudo php5enmod opcache
