@@ -9,13 +9,13 @@ MAINTAINER Víctor Rojas <okvic77@me.com>
 COPY help /help
 RUN /help/pre.sh
 
-COPY alone.conf /etc/supervisor/conf.d/supervisord.conf
+COPY apps.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 COPY fixes/htaccess /usr/share/airtime/public/.htaccess
 
 
-VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime", "/var/lib/mysql"]
+VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime"]
 EXPOSE 80
 
 

@@ -4,7 +4,7 @@ airtime:
     - db
     - rabbit
   ports:
-    - '80:80'
+    - '80'
 db:
   image: 'postgres:latest'
 rabbit:
