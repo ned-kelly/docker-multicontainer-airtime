@@ -1,4 +1,4 @@
-echo "127.0.0.1 airtime" >> /etc/hosts
+# echo "127.0.0.1 airtime" >> /etc/hosts
 locale-gen --purge en_US.UTF-8 && echo -e 'LANG="$LANG"\nLANGUAGE="$LANGUAGE"\n' > /etc/default/locale
 echo "airtime   ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 adduser --disabled-password --gecos "" airtime
