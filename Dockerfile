@@ -6,10 +6,11 @@ ENV LC_ALL en_US.UTF-8
 ENV HOSTNAME airtime
 
 MAINTAINER Víctor Rojas <okvic77@me.com>
-COPY help /help
-RUN /help/pre.sh
+COPY help/pre.sh /pre.sh
+RUN /pre.sh
 
-RUN chown -R airtime /help && su -c "/help/install.sh" airtime
+COPY help/install.sh /home/airtime/install.sh
+RUN su airtime -c "/home/airtime/install.sh"
 
 COPY alone.conf /etc/supervisor/conf.d/supervisord.conf
 
