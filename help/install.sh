@@ -2,8 +2,8 @@
 
 
 sudo service rabbitmq-server start
-source /etc/apache2/envvars
-service apache2 start
+sudo source /etc/apache2/envvars
+sudo service apache2 start
 
 mkdir ~/airtime
 curl -L https://github.com/sourcefabric/airtime/archive/2.5.x.tar.gz | tar --strip-components=1 -C ~/airtime -xz
