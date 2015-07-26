@@ -11,6 +11,10 @@ RUN /help/pre.sh
 
 COPY apps.conf /etc/supervisor/conf.d/supervisord.conf
 
+
+COPY fixed/htaccess /usr/share/airtime/public/.htaccess
+
+
 VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime"]
 EXPOSE 80
 
