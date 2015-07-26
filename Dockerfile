@@ -31,4 +31,4 @@ EXPOSE 80
 
 USER root
 
-CMD ["/usr/bin/supervisord", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/usr/bin/supervisord"]
