@@ -29,6 +29,6 @@ RUN /home/airtime/install.sh
 VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime", "/var/lib/mysql"]
 EXPOSE 80
 
-
+USER root
 
 CMD ["/usr/bin/supervisord"]
