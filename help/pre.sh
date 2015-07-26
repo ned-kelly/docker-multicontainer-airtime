@@ -10,4 +10,6 @@ source /etc/apache2/envvars
 service rabbitmq-server start
 service apache2 start
 
-sudo -u postgres -c "pg_createcluster 9.3 main --start"
+pg_dropcluster 9.3 main && pg_createcluster --locale en_US.UTF-8 9.3 main
+echo "host    all             all             0.0.0.0/0 trust" >> /etc/postgresql/9.3/main/pg_hba.conf
+echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
