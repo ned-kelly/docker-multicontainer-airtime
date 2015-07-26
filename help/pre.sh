@@ -10,4 +10,4 @@ source /etc/apache2/envvars
 service rabbitmq-server start
 service apache2 start
 
-sudo -i -u postgres -c "/etc/init.d/postgresql start && /etc/init.d/postgresql stop"
+sudo -u postgres -c "pg_createcluster 9.3 main --start"
