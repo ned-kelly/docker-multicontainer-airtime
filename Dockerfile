@@ -9,14 +9,21 @@ MAINTAINER Víctor Rojas <okvic77@me.com>
 COPY help/pre.sh /pre.sh
 RUN /pre.sh
 
-COPY help/install.sh /home/airtime/install.sh
-RUN chmod +x /home/airtime/install.sh && chown airtime /home/airtime/install.sh
-RUN su airtime -c "/home/airtime/install.sh"
+
+
 
 COPY alone.conf /etc/supervisor/conf.d/supervisord.conf
+COPY help/install.sh /home/airtime/install.sh
+RUN chmod +x /home/airtime/install.sh && chown airtime /home/airtime/install.sh && mkdir /home/airtime/helpers
+
+USER airtime
+COPY fixes /home/airtime/helpers
+RUN /home/airtime/install.sh
 
 
-COPY fixes/htaccess /usr/share/airtime/public/.htaccess
+
+
+
 
 
 VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime", "/var/lib/mysql"]
