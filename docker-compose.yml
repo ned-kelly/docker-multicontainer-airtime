@@ -1,5 +1,5 @@
 airtime:
-  image: 'okvic77/docker-airtime:latest'
+  image: 'okvic77/airtime:latest'
   links:
     - db
     - rabbit
