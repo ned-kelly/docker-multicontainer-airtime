@@ -1,7 +1,7 @@
 
 
 
-
+sudo service rabbitmq-server start
 
 
 mkdir ~/airtime

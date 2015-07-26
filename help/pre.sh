@@ -7,7 +7,6 @@ apt-get install -y rabbitmq-server apache2 curl supervisor postgresql
 
 
 source /etc/apache2/envvars
-service rabbitmq-server start
 service apache2 start
 
 # pg_dropcluster 9.3 main
