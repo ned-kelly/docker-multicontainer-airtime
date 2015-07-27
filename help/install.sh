@@ -10,7 +10,7 @@ curl -L https://github.com/sourcefabric/airtime/archive/2.5.x.tar.gz | tar --str
 sudo ~/airtime/install -fapi
 
 sudo mkdir -p /srv/airtime/stor
-sudo chown -R airtime:www-data /srv/airtime/stor/
+sudo chown -R www-data:www-data /srv/airtime
 
 
 
