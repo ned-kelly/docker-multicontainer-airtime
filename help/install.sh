@@ -13,8 +13,7 @@ sudo mkdir -p /srv/airtime/stor
 sudo chown -R airtime:www-data /srv/airtime/stor/
 
 
-sudo cp ~/helpers/htaccess /usr/share/airtime/public/.htaccess
-sudo cp ~/helpers/config /etc/airtime/airtime.conf
+
 #sudo cp ~/helpers/media /etc/airtime/media_monitor_logging.cfg
 
 
@@ -32,7 +31,11 @@ curl -v \
 -X "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12" \
 -X "Accept: application/json, text/javascript, */*; q=0.01" \
 -d "dbUser=airtime&dbPass=airtime&dbName=airtime&dbHost=localhost" -X POST \
-http://127.0.0.1/setup/setup-functions.php?obj=DatabaseSetup
+http://localhost/setup/setup-functions.php?obj=DatabaseSetup
+
+sudo cp ~/helpers/htaccess /usr/share/airtime/public/.htaccess
+sudo cp ~/helpers/config /etc/airtime/airtime.conf
+
 
 sudo php5enmod opcache
 sudo rm -rf ~/airtime
