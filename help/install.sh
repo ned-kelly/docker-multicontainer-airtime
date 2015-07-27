@@ -38,6 +38,17 @@ curl -v \
 -d "dbUser=airtime&dbPass=airtime&dbName=airtime&dbHost=localhost" -X POST \
 http://${IP}/setup/setup-functions.php?obj=DatabaseSetup
 
+
+curl -v \
+-H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
+-X "X-Requested-With: XMLHttpRequest" \
+-X "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12" \
+-X "Accept: application/json, text/javascript, */*; q=0.01" \
+-d "mediaFolder=/srv/airtime/stor" -X POST \
+http://${IP}/setup/setup-functions.php?obj=MediaSetup
+
+
+
 sudo cp ~/helpers/htaccess /usr/share/airtime/public/.htaccess
 sudo cp ~/helpers/config /etc/airtime/airtime.conf
 
