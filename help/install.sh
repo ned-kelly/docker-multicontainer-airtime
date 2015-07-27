@@ -17,6 +17,10 @@ sudo chown -R airtime:www-data /srv/airtime/stor/
 #sudo cp ~/helpers/media /etc/airtime/media_monitor_logging.cfg
 
 
+sudo service spache2 restart
+
+sleep 5
+echo "DB"
 
 #FILES=/usr/share/airtime/build/sql/*.sql
 #for f in $FILES
