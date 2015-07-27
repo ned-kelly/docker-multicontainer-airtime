@@ -11,12 +11,6 @@ RUN /pre.sh
 
 
 
-VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime"]
-
-VOLUME ["/var/tmp/airtime"]
-VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
-VOLUME ["/var/log/rabbitmq", "/var/lib/rabbitmq"]
-
 
 
 COPY alone.conf /etc/supervisor/conf.d/supervisord.conf
@@ -27,6 +21,12 @@ USER airtime
 COPY fixes /home/airtime/helpers
 RUN /home/airtime/install.sh
 
+
+VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime"]
+
+VOLUME ["/var/tmp/airtime"]
+VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
+VOLUME ["/var/log/rabbitmq", "/var/lib/rabbitmq"]
 
 
 
