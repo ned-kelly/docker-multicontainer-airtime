@@ -17,7 +17,7 @@ sudo chown -R airtime:www-data /srv/airtime/stor/
 #sudo cp ~/helpers/media /etc/airtime/media_monitor_logging.cfg
 
 
-sudo service spache2 restart
+sudo service apache2 restart
 
 sleep 5
 echo "DB"
@@ -28,6 +28,7 @@ echo "DB"
 #  echo "Processing $f file..."
 #  su postgres -c "PGPASSWORD=airtime psql -U airtime --dbname airtime -h localhost -f $f"
 #done
+IP=$(ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://')
 
 curl -v \
 -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
@@ -35,7 +36,7 @@ curl -v \
 -X "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12" \
 -X "Accept: application/json, text/javascript, */*; q=0.01" \
 -d "dbUser=airtime&dbPass=airtime&dbName=airtime&dbHost=localhost" -X POST \
-http://localhost/setup/setup-functions.php?obj=DatabaseSetup
+http://${IP}/setup/setup-functions.php?obj=DatabaseSetup
 
 sudo cp ~/helpers/htaccess /usr/share/airtime/public/.htaccess
 sudo cp ~/helpers/config /etc/airtime/airtime.conf
