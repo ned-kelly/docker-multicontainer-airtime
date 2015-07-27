@@ -18,5 +18,13 @@ sudo cp ~/helpers/config /etc/airtime/airtime.conf
 #sudo cp ~/helpers/media /etc/airtime/media_monitor_logging.cfg
 
 
+
+FILES=/usr/share/airtime/build/sql/{schema,sequences,views,triggers,defaultdata}.sql
+for f in $FILES
+do
+  echo "Processing $f file..."
+  PGPASSWORD=airtime psql -U airtime --dbname airtime -h localhost -f $f
+done
+
 sudo php5enmod opcache
 sudo rm -rf ~/airtime
