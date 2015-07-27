@@ -19,7 +19,8 @@ sudo cp ~/helpers/config /etc/airtime/airtime.conf
 
 
 
-FILES=/usr/share/airtime/build/sql/{schema,sequences,views,triggers,defaultdata}.sql
+FILES=/usr/share/airtime/build/sql/*.sql
+
 for f in $FILES
 do
   echo "Processing $f file..."
