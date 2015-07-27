@@ -19,13 +19,20 @@ sudo cp ~/helpers/config /etc/airtime/airtime.conf
 
 
 
-FILES=/usr/share/airtime/build/sql/*.sql
+#FILES=/usr/share/airtime/build/sql/*.sql
+#for f in $FILES
+#do
+#  echo "Processing $f file..."
+#  su postgres -c "PGPASSWORD=airtime psql -U airtime --dbname airtime -h localhost -f $f"
+#done
 
-for f in $FILES
-do
-  echo "Processing $f file..."
-  PGPASSWORD=airtime psql -U airtime --dbname airtime -h localhost -f $f
-done
+curl -v \
+-H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
+-X "X-Requested-With: XMLHttpRequest" \
+-X "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12" \
+-X "Accept: application/json, text/javascript, */*; q=0.01" \
+-d "dbUser=airtime&dbPass=airtime&dbName=airtime&dbHost=localhost" -X POST \
+http://127.0.0.1/setup/setup-functions.php?obj=DatabaseSetup
 
 sudo php5enmod opcache
 sudo rm -rf ~/airtime
