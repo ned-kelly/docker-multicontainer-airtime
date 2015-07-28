@@ -30,7 +30,7 @@ echo "DB"
 #done
 IP=$(ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://')
 
-curl -v \
+curl \
 -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
 -X "X-Requested-With: XMLHttpRequest" \
 -X "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12" \
@@ -39,7 +39,7 @@ curl -v \
 http://${IP}/setup/setup-functions.php?obj=DatabaseSetup
 
 
-curl -v \
+curl \
 -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
 -X "X-Requested-With: XMLHttpRequest" \
 -X "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12" \
