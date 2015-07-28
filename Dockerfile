@@ -23,19 +23,16 @@ RUN /home/airtime/install.sh
 
 
 VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime"]
-
 VOLUME ["/var/tmp/airtime"]
+
 VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
+
 VOLUME ["/var/log/rabbitmq", "/var/lib/rabbitmq"]
 
+VOLUME ["/var/log/icecast2", "/etc/icecast2"]
 
 
-
-
-
-
-
-EXPOSE 80
+EXPOSE 80 8000
 
 USER root
 

@@ -18,7 +18,7 @@ sudo chown -R www-data:www-data /srv/airtime
 
 
 sudo service apache2 restart
-
+service postgresql restart
 sleep 5
 echo "DB"
 
@@ -55,3 +55,5 @@ sudo cp ~/helpers/config /etc/airtime/airtime.conf
 
 sudo php5enmod opcache
 sudo rm -rf ~/airtime
+
+sudo apt-get clean
