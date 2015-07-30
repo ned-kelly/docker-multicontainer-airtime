@@ -1,11 +1,11 @@
 airtime:
   image: 'okvic77/airtime:latest'
-  links:
-    - db
-    - rabbit
+#  links:
+#    - db
+#    - rabbit
   ports:
     - '80'
-db:
-  image: 'postgres:latest'
-rabbit:
-  image: 'rabbitmq:latest'
+#db:
+#  image: 'postgres:latest'
+#rabbit:
+#  image: 'rabbitmq:latest'
