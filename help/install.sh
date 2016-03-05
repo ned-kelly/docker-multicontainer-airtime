@@ -1,24 +1,21 @@
+#!/bin/bash
+export DEBIAN_FRONTEND=noninteractive
 
-
-
+source /etc/apache2/envvars
 sudo service rabbitmq-server start
-sudo source /etc/apache2/envvars
 sudo service apache2 start
 
 mkdir ~/airtime
-curl -L https://github.com/sourcefabric/airtime/archive/2.5.x.tar.gz | tar --strip-components=1 -C ~/airtime -xz
+curl -L https://github.com/sourcefabric/airtime/archive/airtime-2.5.2.1.tar.gz | tar --strip-components=1 -C ~/airtime -xz
 sudo ~/airtime/install -fapi
 
 sudo mkdir -p /srv/airtime/stor
 sudo chown -R www-data:www-data /srv/airtime
 
-
-
 #sudo cp ~/helpers/media /etc/airtime/media_monitor_logging.cfg
 
-
 sudo service apache2 restart
-service postgresql restart
+sudo service postgresql restart
 sleep 5
 echo "DB"
 
