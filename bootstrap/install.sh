@@ -30,7 +30,7 @@ curl \
 -X "X-Requested-With: XMLHttpRequest" \
 -X "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12" \
 -X "Accept: application/json, text/javascript, */*; q=0.01" \
--d "dbUser=airtime&dbPass=airtime&dbName=airtime&dbHost=localhost" -X POST \
+-d "dbUser=airtime&dbPass=airtime&dbName=airtime&dbHost=airtime-postgres" -X POST \
 http://${IP}/setup/setup-functions.php?obj=DatabaseSetup
 
 

@@ -12,7 +12,9 @@ services:
 
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /localmusic:/localmusic
+
+      # Map your music directories to '/srv/airtime/stor' within the container.
+      - /localmusic:/srv/airtime/stor:ro
 
     networks:
       - airtime
