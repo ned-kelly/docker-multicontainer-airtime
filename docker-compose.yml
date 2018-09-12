@@ -1,11 +1,67 @@
-airtime:
-  image: 'okvic77/airtime:latest'
-#  links:
-#    - db
-#    - rabbit
-  ports:
-    - '80'
-#db:
-#  image: 'postgres:latest'
-#rabbit:
-#  image: 'rabbitmq:latest'
+version: '2'
+
+services:
+  airtime-core:
+    build: .
+    container_name: airtime-core
+    restart: always
+    privileged: true
+
+    ports:
+      - 8882:80
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /localmusic:/localmusic
+
+    networks:
+      - airtime
+      - airtime-internal
+
+  airtime-postgres:
+    image: postgres:10-alpine
+    container_name: airtime-postgres
+    restart: always
+    privileged: true
+
+    environment:
+      - POSTGRES_PASSWORD=airtime
+      - POSTGRES_USER=airtime
+      - POSTGRES_DB=airtime
+      - PGDATA=/postgres_data
+
+    volumes:
+      - ./postgresql:/postgres_data
+      - /etc/localtime:/etc/localtime:ro
+
+    networks:
+      - airtime-internal
+
+
+
+  airtime-rabbitmq:
+    image: rabbitmq:3.7-alpine
+    container_name: airtime-rabbitmq
+    restart: always
+    privileged: true
+
+    ports:
+      - 5672:5672
+
+    environment:
+      - RABBITMQ_DEFAULT_USER=airtime
+      - RABBITMQ_DEFAULT_PASS=airtime
+      - RABBITMQ_DEFAULT_VHOST=airtime
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+    networks:
+      - airtime-internal
+
+
+networks:
+  airtime:
+    external: true
+  airtime-internal:
+    driver: bridge

@@ -2,7 +2,6 @@
 export DEBIAN_FRONTEND=noninteractive
 
 source /etc/apache2/envvars
-sudo service rabbitmq-server start
 sudo service apache2 start
 
 mkdir ~/airtime
@@ -15,7 +14,6 @@ sudo chown -R www-data:www-data /srv/airtime
 #sudo cp ~/helpers/media /etc/airtime/media_monitor_logging.cfg
 
 sudo service apache2 restart
-sudo service postgresql restart
 sleep 5
 echo "DB"
 
@@ -43,7 +41,6 @@ curl \
 -X "Accept: application/json, text/javascript, */*; q=0.01" \
 -d "mediaFolder=/srv/airtime/stor" -X POST \
 http://${IP}/setup/setup-functions.php?obj=MediaSetup
-
 
 
 sudo cp ~/helpers/htaccess /usr/share/airtime/public/.htaccess

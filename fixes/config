@@ -1,6 +1,6 @@
 
 [general]
-api_key = C66QKEUKNJG9A0KYU32I
+api_key = B5EC0374BE17A55AED32
 web_server_user = www-data
 base_url = localhost
 base_port = 80
@@ -9,14 +9,14 @@ cache_ahead_hours = 1
 
 
 [database]
-host = localhost
+host = airtime-postgres
 dbname = airtime
 dbuser = airtime
 dbpass = airtime
 
 
 [rabbitmq]
-host = 127.0.0.1
+host = airtime-rabbitmq
 port = 5672
 user = airtime
 password = airtime
