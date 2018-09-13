@@ -26,6 +26,8 @@ The project consists of three main containers/components:
 You will want to edit the `docker-compose.yml` file and change some of the mappings to suit your needs.
 If you're new to docker you should probably just change the `/localmusic:/external-media:ro` line to the directory on your Linux server where your media resides (Just replace `/localmusic` with the path to your media).
 
+You will also want to configure `icecast.xml` to suit your needs - (Don't leave the passwords as the default if you're exposing this to the internet).
+
 ## Standing up:
 
 It's pretty straightforward, just clone down the sources and stand up the container like so:
@@ -65,3 +67,10 @@ Have fun!
  - There seems to be a bug in the current build of Airtime where if you run Postgres on another host the web/ui fails to log in (without any logs/errors showing anywhere)... After much pain trying to get this running "properly", the quick and simple fix has been to use a TCP proxy, that just proxies the PostgreSQL port:5432 to the actual dedicated postgres container.
 
  - Icecast can't really run in it's own dedicated container because Airtime writes its config - This could be fixed my mapping the config files from one container into the other, but how far do we want to go here... For now, there's going to be no harm running it in the main `airtime-core` container as it uses minimal resources anyway.
+
+
+## Deploying on the internet?
+
+You will need to setup port forwarding for TCP:8000 (Icecast server) and perhaps to your web interface...
+
+You might want to use something like [Caddy](https://github.com/abiosoft/caddy-docker) to proxy pass to Apache with an automatic signed SSL certificate thanks to Lets Encrypt... 
