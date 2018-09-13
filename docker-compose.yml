@@ -1,27 +1,8 @@
 version: '2'
 
 services:
-  airtime-core:
-    build: .
-    container_name: airtime-core
-    restart: always
-    privileged: true
-
-    ports:
-      - 8882:80
-
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-
-      # Map your music directories to '/srv/airtime/stor' within the container.
-      - /localmusic:/srv/airtime/stor:ro
-
-    networks:
-      - airtime
-      - airtime-internal
-
   airtime-postgres:
-    image: postgres:10-alpine
+    image: postgres:9.2-alpine
     container_name: airtime-postgres
     restart: always
     privileged: true
@@ -29,7 +10,6 @@ services:
     environment:
       - POSTGRES_PASSWORD=airtime
       - POSTGRES_USER=airtime
-      - POSTGRES_DB=airtime
       - PGDATA=/postgres_data
 
     volumes:
@@ -39,7 +19,9 @@ services:
     networks:
       - airtime-internal
 
-
+    ports:
+      # Postgre port mapped to non-standard port (for external admin access) - Internal access is via the internal docker network
+      - 5433:5432
 
   airtime-rabbitmq:
     image: rabbitmq:3.7-alpine
@@ -47,13 +29,10 @@ services:
     restart: always
     privileged: true
 
-    ports:
-      - 5672:5672
-
     environment:
       - RABBITMQ_DEFAULT_USER=airtime
       - RABBITMQ_DEFAULT_PASS=airtime
-      - RABBITMQ_DEFAULT_VHOST=airtime
+      - "RABBITMQ_DEFAULT_VHOST=/airtime"
 
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -61,6 +40,27 @@ services:
     networks:
       - airtime-internal
 
+  airtime-core:
+    build: .
+    container_name: airtime-core
+    restart: always
+    privileged:  true
+
+    ports:
+      # Web UI Port (proxy pass to this, chang eto 80:80 if you want to access directly in the browser without a reverse proxy)
+      - 8882:80
+      # Icecast Default Port
+      - 8000:8000
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+      # Map your music directories to '/srv/airtime/stor' within the container.
+      - /localmusic:/external-media:ro
+
+    networks:
+      - airtime
+      - airtime-internal
 
 networks:
   airtime:

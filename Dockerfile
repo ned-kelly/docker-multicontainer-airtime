@@ -1,28 +1,25 @@
-FROM ubuntu:latest
+FROM ubuntu:trusty
 
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
 ENV HOSTNAME airtime
 
-COPY bootstrap/pre.sh /pre.sh
-RUN /pre.sh
+## General components we need in this container...
+RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y locales sudo htop nano curl wget supervisor
 
-COPY alone.conf /etc/supervisor/conf.d/supervisord.conf
-COPY bootstrap/install.sh /home/airtime/install.sh
-RUN chmod +x /home/airtime/install.sh && chown airtime /home/airtime/install.sh && mkdir /home/airtime/helpers
+COPY bootstrap/bootstrap.sh /opt/airtime/bootstrap.sh
+COPY minimal.conf /etc/supervisor/conf.d/supervisord.conf
 
-USER airtime
-COPY fixes /home/airtime/helpers
-RUN /home/airtime/install.sh
+RUN chmod +x /opt/airtime/bootstrap.sh && \
+    mkdir /opt/airtime/helpers
 
-VOLUME ["/srv/airtime/stor/", "/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime"]
+COPY fixes /opt/airtime/helpers
+RUN /opt/airtime/bootstrap.sh
+
+VOLUME ["/etc/airtime", "/var/tmp/airtime/", "/var/log/airtime", "/usr/share/airtime", "/usr/lib/airtime"]
 VOLUME ["/var/tmp/airtime"]
 
 VOLUME ["/var/log/icecast2", "/etc/icecast2"]
 
 EXPOSE 80 8000
-
-USER root
 
 CMD ["/usr/bin/supervisord"]
