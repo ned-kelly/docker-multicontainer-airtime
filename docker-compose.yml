@@ -2,7 +2,7 @@ version: '2'
 
 services:
   airtime-postgres:
-    image: postgres:9.2-alpine
+    image: postgres:9.3-alpine
     container_name: airtime-postgres
     restart: always
     privileged: true
@@ -24,7 +24,7 @@ services:
       - 5433:5432
 
   airtime-rabbitmq:
-    image: rabbitmq:3.7-alpine
+    image: rabbitmq:3.6-alpine
     container_name: airtime-rabbitmq
     restart: always
     privileged: true
