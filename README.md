@@ -10,6 +10,8 @@ It was loosely based on @okvic77's doker build, however I've rewritten all of it
 
 ![UI Screenshot](screenshots/ui-screenshot.png "Airtime UI Screenshot Example")
 
+![Configuration Passing](screenshots/config-check.png "Airtime Configuration all Passing")
+
 
 ## Overview:
 
@@ -30,7 +32,7 @@ It's pretty straightforward, just clone down the sources and stand up the contai
 
 ```bash
 # Clone down sources
-git clone https://github.com/ned-kelly/docker-airtime.git
+git clone https://github.com/ned-kelly/docker-multicontainer-airtime.git
 
 # Stand up the container
 docker-compose up -d --build
@@ -50,8 +52,13 @@ Just go to http://server-ip:8882/ (remove port 8882 if you mapped 80:80 in your 
  - Default Username: `admin`
  - Default Password: `admin`
 
+If you need to check the status of any services you may also do so by going to:
+
+ - http://server-ip:8882/?config
+
 Have fun!
 
+**WAIT 5 OR SO MINUTES FOR THE CONTAINER TO BOOTSTRAP BEFORE TRYING TO ACCESS THE CONTAINER FOR THE FIRST TIME!**
 
 ## Things to note / hack fixes:
 

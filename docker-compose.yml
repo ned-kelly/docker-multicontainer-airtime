@@ -56,7 +56,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
       # Map your music directories to '/srv/airtime/stor' within the container.
-      - /localmusic:/external-media:ro
+      # NB: Airtime will create some directories in this location (for user uploads, recorded podcasts etc)
+
+      - /localmusic:/external-media
 
     networks:
       - airtime

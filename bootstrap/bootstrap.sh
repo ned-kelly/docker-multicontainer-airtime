@@ -80,6 +80,11 @@ apt-get remove rabbitmq-server postgresql-9.3 -y
 
 sudo php5enmod opcache
 
+## Locals need to be configured or the media monitor dies in the ass...
+locale-gen "en_US.UTF-8"
+dpkg-reconfigure locales
+echo -e "LC_ALL=en_US.UTF-8\nLANG=en_US.UTF-8" >> /etc/default/locale
+
 # There seems to be a bug somewhere in the code and it's not respecting the DB being on another host (even though it's configured in the config files!)
 # We'll use a lightweight golang TCP proxy to proxy any PGSQL request to the postgres docker container on TCP:5432. 
 
