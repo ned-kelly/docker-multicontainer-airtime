@@ -41,7 +41,7 @@ docker-compose up -d --build
 
 ```
 **NOTE**:
-When running for the first time, the airtime-core container will run some 'boostrap' scripts. This will take a few minutes (after standing up the containers) BEFORE you will be able to fully access airtime.
+When running for the first time, the airtime-core container will run some 'boostrap' scripts. This will take 30-60 seconds (after standing up the containers) BEFORE you will be able to fully access airtime.
 
 You can monitor the progress of the bootstrap process by running: `docker logs -f airtime-core`.
 
@@ -60,7 +60,7 @@ If you need to check the status of any services you may also do so by going to:
 
 Have fun!
 
-**WAIT 5 OR SO MINUTES FOR THE CONTAINER TO BOOTSTRAP BEFORE TRYING TO ACCESS THE CONTAINER FOR THE FIRST TIME!**
+**WAIT 30 SECONDS OR SO FOR THE CONTAINER TO BOOTSTRAP BEFORE TRYING TO ACCESS THE CONTAINER FOR THE FIRST TIME!**
 
 ## Things to note / hack fixes:
 
