@@ -1,5 +1,14 @@
 # "Airtime" Multi-container Docker Setup.
 
+> ###This project is no longer maintained as the upstream open-source project is now stale - Instead please see my Libretime container which is still actively maintained!
+
+> ###[https://github.com/ned-kelly/docker-multicontainer-libretime](https://github.com/ned-kelly/docker-multicontainer-libretime)
+
+
+
+---------------------------
+
+
 This is a multi-container Docker build of the Sourcefabric Airtime Radio Broadcast Software.
 
 It's an aim to run the environment ready for production, with common media directories, database files etc mapped into the container(s) so data is persisted between rebuilds of the application.
